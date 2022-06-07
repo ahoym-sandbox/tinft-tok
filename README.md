@@ -2,8 +2,8 @@
 
 Putting the typescript XRPL client, [`xrpl.js`](https://github.com/XRPLF/xrpl.js), in a CRA app so it can be sandboxed and experimented with easily. Developers can fork the project, or:
 
-1. `git clone https://github.com/ahoym/cra-xrpl-sandbox.git`
-2. `cd cra-xrpl-sandbox`
+1. `git clone https://github.com/ahoym-sandbox/tinft-tok.git`
+2. `cd tinft-tok`
 3. `yarn install`
 4. `yarn start`
 
