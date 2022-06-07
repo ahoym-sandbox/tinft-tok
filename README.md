@@ -22,6 +22,12 @@ See the `xrpl` reference documentation for more details: https://xrpl.org/tutori
 
 This project is still using react-scripts/CRA v4 because CRA v5 uses webpack v5, which does not bundle node core modules. While this makes sense in the browser world, it is an inconvenience for this project as xrpl.js does require usage of said modules. Since this is a sandbox starter, we opt to leave this on CRA v4 just for convenience's sake. See https://github.com/facebook/create-react-app/issues/11756 for more details on the issue if interested.
 
+## References
+
+- **S3 related**
+  - [Upload files to s3 bucket, NodeJS](https://flaviocopes.com/node-upload-files-s3/)
+  - [Make s3 bucket public](https://bobbyhadz.com/blog/get-s3-bucket-url)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
