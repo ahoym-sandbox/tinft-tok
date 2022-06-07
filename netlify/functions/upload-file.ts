@@ -9,8 +9,8 @@ const BUCKET_NAME = process.env.BUCKET_NAME;
 
 const s3Client = new S3({
   region: REGION,
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_ACCESS_KEY_SECRET,
+  accessKeyId: process.env.AWS_API_ID,
+  secretAccessKey: process.env.AWS_API_SECRET,
 });
 
 const handler: Handler = async (event: Event, context: Context) => {
