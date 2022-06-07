@@ -28,6 +28,12 @@ This project is still using react-scripts/CRA v4 because CRA v5 uses webpack v5,
   - [Upload files to s3 bucket, NodeJS](https://flaviocopes.com/node-upload-files-s3/)
   - [Make s3 bucket public](https://bobbyhadz.com/blog/get-s3-bucket-url)
 
+## Scripts
+
+```sh
+BUCKET_NAME=<bucket_name_here> AWS_API_ID=<iam_id_here> AWS_API_SECRET=<iam_secret_here> node scripts/s3-bucket.js
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
