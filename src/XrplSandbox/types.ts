@@ -26,3 +26,9 @@ export enum Environment {
   DEV_NET = 'DEV_NET',
   NFT_DEV_NET = 'NFT_DEV_NET',
 }
+
+export interface NFTMetadata {
+  author: string;
+  description: string;
+  url: string;
+}
