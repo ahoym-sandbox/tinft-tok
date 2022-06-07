@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@netlify/functions": "^1.0.0",
+    "aws-sdk": "^2.1150.0",
     "netlify-cli": "^10.4.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
