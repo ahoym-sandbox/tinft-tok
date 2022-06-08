@@ -1,24 +1,19 @@
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import './App.css';
-import { HomePage } from './components/Homepage';
-import NavBar from './components/NavBar';
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#1976d2',
-    },
-  },
-});
+import { Container } from "@mui/material";
+import "./App.css";
+import { AppBottomNavigation } from "./components/AppBottomNavigation";
+// import { MintNFTView } from "./components/MintNFTView";
+// import { NFTMarketplace } from "./components/NFTMarketplace";
+import UserNFTGallery from "./components/UserNFTGallery";
 
 function App() {
   return (
     <div className="App">
-      <ThemeProvider theme={darkTheme}>
-      <NavBar />
-      <HomePage />
-      </ThemeProvider>
+      <Container sx={{ minHeight: "500px", padding: "32px 16px 16px" }}>
+        {/* <NFTMarketplace /> */}
+        <UserNFTGallery />
+        {/* <MintNFTView /> */}
+      </Container>
+      <AppBottomNavigation />
     </div>
   );
 }
