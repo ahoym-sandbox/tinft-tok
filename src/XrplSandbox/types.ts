@@ -31,4 +31,6 @@ export interface NFTMetadata {
   author: string;
   description: string;
   url: string;
+  lastModified: number;
+  fileType: string;
 }

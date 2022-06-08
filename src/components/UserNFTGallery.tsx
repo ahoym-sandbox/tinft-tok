@@ -48,9 +48,6 @@ const UserNFTGallery = () => {
                   />
                   <ImageListItemBar
                     title={getNftMetadata(nft.URI).author}
-                    subtitle={
-                      <span>{getNftMetadata(nft.URI).description}</span>
-                    }
                     position="below"
                   />
                 </ImageListItem>

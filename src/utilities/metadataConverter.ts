@@ -20,3 +20,14 @@ export function generateNFTMemos(URI: string) {
         }
       ]
 }
+
+export function buildMetadataFromFile(file: File): NFTMetadata {
+
+  return {
+    author: "piplup",
+    lastModified: file.lastModified,
+    fileType: file.type,
+    description: file.name,
+    url: "https://thumbs.dreamstime.com/z/ripple-xrp-going-to-moon-vector-illustration-rocket-bitcoin-crypto-market-156342690.jpg"
+  }
+}
