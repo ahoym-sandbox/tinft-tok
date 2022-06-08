@@ -16,7 +16,7 @@ export const AppBottomNavigation = ({
   onViewChange,
 }: AppBottomNavigationProps) => {
   return (
-    <Box sx={{ width: '100%', marginTop: '16px' }}>
+    <Box className="AppBottomNavigation" sx={{ width: '100%', marginTop: '16px' }}>
       <BottomNavigation
         showLabels
         value={currentView}
@@ -30,7 +30,7 @@ export const AppBottomNavigation = ({
           value={AppViews.MARKETPLACE}
         />
         <BottomNavigationAction
-          label="Mint NFTs"
+          label="Mint NFT"
           icon={<CameraAltIcon />}
           value={AppViews.MINT_IT}
         />

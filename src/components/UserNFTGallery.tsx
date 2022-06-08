@@ -1,14 +1,13 @@
-import * as React from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import { convertHexToString, NFTokenMint } from "xrpl";
-import { NFTMetadata } from "../XrplSandbox/types";
-import EmptyState from "./EmptyState";
-import { useEffect, useState } from "react";
-import { nftDevNetXrplClient1 } from "../XrplSandbox/createClients";
-import { CLIENT_ONE_FAUCET_WALLET_SECRET } from "../XrplSandbox/scripts/CONFIG";
-
+import * as React from 'react';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import { convertHexToString, NFTokenMint } from 'xrpl';
+import { NFTMetadata } from '../XrplSandbox/types';
+import EmptyState from './EmptyState';
+import { useEffect, useState } from 'react';
+import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
+import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
 
 const getNftMetadata = (URI: string): NFTMetadata => {
   return JSON.parse(convertHexToString(URI));
@@ -29,14 +28,14 @@ const UserNFTGallery = () => {
   }, []);
 
   return (
-    <div className="UserNFTGallery mt-10 flex flex-col mx-10">
-      <div className="w-full inline-block p-3 align-middle rounded-md shadow-md">
+    <div className="UserNFTGallery">
+      <h2>Your NFTs</h2>
+      <div className="p-3">
         {!!nfts.length ? (
           <ImageList
-            sx={{ height: 650 }}
-            variant="quilted"
-            cols={3}
-            rowHeight={200}
+            className="ImageList"
+            cols={2}
+            rowHeight={250}
           >
             {nfts.map((nft: NFTokenMint, idx) =>
               nft.URI ? (

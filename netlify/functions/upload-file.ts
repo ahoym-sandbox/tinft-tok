@@ -14,24 +14,29 @@ const s3Client = new S3({
 });
 
 const handler: Handler = async (event: Event, context: Context) => {
+  console.log('Called upload-file');
+
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  // TODO - Translate request?
-  const request = JSON.parse(event.body).txJson;
-  const { fileContent, fileExtension, fileName } = request;
-  console.log('typeof', typeof fileContent);
+  const fileName = event.headers['x-file-name'];
+  const fileType = event.headers['x-file-type'];
+  const fileContent = event.body;
+  const buf = Buffer.from(fileContent, 'base64');
 
-  new Promise((resolve, reject) => {
+  return new Promise<any>((resolve, reject) => {
     s3Client.upload(
       {
         Bucket: BUCKET_NAME,
-        Key: path.basename(`${fileName}.${fileExtension}`),
-        Body: fileContent,
+        Key: path.basename(fileName),
+        Body: buf,
+        ContentEncoding: 'base64',
+        ContentType: fileType,
       },
-      {},
       (error, data) => {
+        console.log('CALLBACK', error, data);
+
         if (error) {
           console.error('Upload Error', error);
           reject({
