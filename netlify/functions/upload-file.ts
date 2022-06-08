@@ -24,19 +24,17 @@ const handler: Handler = async (event: Event, context: Context) => {
   const fileName = event.headers['x-file-name'];
   const fileType = event.headers['x-file-type'];
   const fileContent = event.body;
-
-  console.log('TEST LOG HERE0', event.headers);
-  console.log('TEST LOG HERE1', fileName, fileExtension);
+  const buf = Buffer.from(fileContent, 'base64');
 
   new Promise((resolve, reject) => {
     s3Client.upload(
       {
         Bucket: BUCKET_NAME,
         Key: path.basename(`${fileName}${fileExtension}`),
-        Body: fileContent,
+        Body: buf,
+        ContentEncoding: 'base64',
         ContentType: fileType,
       },
-      {},
       (error, data) => {
         console.log('CALLBACK', error, data);
 
