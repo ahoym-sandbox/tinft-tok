@@ -2,8 +2,8 @@
 
 Putting the typescript XRPL client, [`xrpl.js`](https://github.com/XRPLF/xrpl.js), in a CRA app so it can be sandboxed and experimented with easily. Developers can fork the project, or:
 
-1. `git clone https://github.com/ahoym/cra-xrpl-sandbox.git`
-2. `cd cra-xrpl-sandbox`
+1. `git clone https://github.com/ahoym-sandbox/tinft-tok.git`
+2. `cd tinft-tok`
 3. `yarn install`
 4. `yarn start`
 
@@ -21,6 +21,18 @@ See the `xrpl` reference documentation for more details: https://xrpl.org/tutori
 ## Developer notes
 
 This project is still using react-scripts/CRA v4 because CRA v5 uses webpack v5, which does not bundle node core modules. While this makes sense in the browser world, it is an inconvenience for this project as xrpl.js does require usage of said modules. Since this is a sandbox starter, we opt to leave this on CRA v4 just for convenience's sake. See https://github.com/facebook/create-react-app/issues/11756 for more details on the issue if interested.
+
+## References
+
+- **S3 related**
+  - [Upload files to s3 bucket, NodeJS](https://flaviocopes.com/node-upload-files-s3/)
+  - [Make s3 bucket public](https://bobbyhadz.com/blog/get-s3-bucket-url)
+
+## Scripts
+
+```sh
+BUCKET_NAME=<bucket_name_here> AWS_API_ID=<iam_id_here> AWS_API_SECRET=<iam_secret_here> node scripts/s3-bucket.js
+```
 
 # Getting Started with Create React App
 
