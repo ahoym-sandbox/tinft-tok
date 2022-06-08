@@ -26,7 +26,7 @@ const NFTMarketplace = () => {
       console.log('LIST: ', nftlist);
       let all: any[] = [];
       nftlist.forEach((a: any) => {
-        all = [...all, ...a.result.account_nfts];
+        all = [...all, ...a.result.account_nfts].reverse();
       });
       setNfts(all);
     }
