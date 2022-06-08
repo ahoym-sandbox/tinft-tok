@@ -10,6 +10,7 @@ import {
   xrpToDrops,
 } from 'xrpl';
 import { Amount } from 'xrpl/dist/npm/models/common';
+import { generateNFTMemos } from '../../utilities/metadataConverter';
 import { MS_IN_S, RIPPLE_EPOCH_IN_MS } from '../constants';
 import { StateRefProvider } from '../types';
 
@@ -42,6 +43,7 @@ export const mintTransferableNft = async (
 
   if (URI) {
     nfTokenMintTxPayload.URI = URI;
+    nfTokenMintTxPayload.Memos = generateNFTMemos(URI);
   }
   // Throw an error instead if desired. See NFTokenMint transaction in jsdoc to see TransferFee constraints.
   const isValidTransferFee =
