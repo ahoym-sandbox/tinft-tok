@@ -45,11 +45,11 @@ export function generateNftDevnetXrplClient() {
   return new XrplClient(NFT_DEV_NET);
 }
 
-export const xrplClient1 = generateTestnetXrplClient();
-export const xrplClient2 = generateTestnetXrplClient();
+// export const xrplClient1 = generateTestnetXrplClient();
+// export const xrplClient2 = generateTestnetXrplClient();
 
-export const xrplDevNetClient1 = generateDevNetXrplClient();
-export const xrplDevNetClient2 = generateDevNetXrplClient();
+// export const xrplDevNetClient1 = generateDevNetXrplClient();
+// export const xrplDevNetClient2 = generateDevNetXrplClient();
 
 export const nftDevNetXrplClient1 = generateNftDevnetXrplClient();
 export const nftDevNetXrplClient2 = generateNftDevnetXrplClient();
@@ -90,8 +90,8 @@ console.log('🤖 💻 Happy sandboxing! 🖥️ 🤖');
  * Place testnet clients on window so they can be experimented with
  * in the web console.
  */
-(window as any).xrplClient1 = xrplClient1;
-(window as any).xrplClient2 = xrplClient2;
+// (window as any).xrplClient1 = xrplClient1;
+// (window as any).xrplClient2 = xrplClient2;
 (window as any).nftDevNetXrplClient1 = nftDevNetXrplClient1;
 (window as any).nftDevNetXrplClient2 = nftDevNetXrplClient2;
 
