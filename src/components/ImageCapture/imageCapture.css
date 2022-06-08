@@ -10,11 +10,11 @@
 }
 
 .capture-icon-path {
-  fill: #61dafb;
+  fill: #1976d2;
 }
 
 .capture-icon:hover .capture-icon-path {
-  fill: #61dafb;
+  fill: #1976d2;
 }
 
 .capture-label {
@@ -41,16 +41,16 @@
 
 .upload-icon-path {
   fill: white;
-  fill-rule: "evenodd";
-  clip-rule: "evenodd";
+  fill-rule: 'evenodd';
+  clip-rule: 'evenodd';
 }
 
 .upload-button {
   cursor: pointer;
-  padding: 10px;;
-  color: #61dafb;
+  padding: 10px;
+  color: #1976d2;
   background-color: transparent;
-  border: 1px solid #61dafb;
+  border: 1px solid #1976d2;
   border-radius: 5px;
   margin-top: 10px;
   width: 200px;
@@ -59,7 +59,7 @@
 .upload-button:hover {
   color: white;
   border: none;
-  background-color: #61dafb;
+  background-color: #1976d2;
 }
 
 .upload-preview-wrapper {
@@ -93,4 +93,9 @@
   width: 330px;
   margin-bottom: 10px;
   padding: 0px 10px;
+}
+
+.capture-preview-field {
+  font-weight: bold;
+  color: #4169e1;
 }

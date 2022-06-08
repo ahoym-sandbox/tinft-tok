@@ -1,6 +1,6 @@
-import * as React from "react";
-import { CaptureIcon } from "./CaptureIcon";
-import "./imageCapture.css";
+import * as React from 'react';
+import { CaptureIcon } from './CaptureIcon';
+import './imageCapture.css';
 
 interface ImageCaptureWebcamProps {
   onSubmit?: (file: File) => void;
@@ -14,8 +14,8 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
   const [file, setFile] = React.useState<File | null>(null);
   const [canvasCtx, setCanvasCtx] =
     React.useState<CanvasRenderingContext2D | null>();
-  const [canvasWidth, setCanvasWidth] = React.useState<string>("0px");
-  const [canvasHeight, setCanvasHeight] = React.useState<string>("0px");
+  const [canvasWidth, setCanvasWidth] = React.useState<string>('0px');
+  const [canvasHeight, setCanvasHeight] = React.useState<string>('0px');
 
   const [autoPlay, setAutoPlay] = React.useState<boolean>(false);
   const canvas = React.useRef<HTMLCanvasElement>(null);
@@ -24,7 +24,7 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
   const startWebcam = async () => {
     setAutoPlay(true);
     if (canvas.current) {
-      setCanvasCtx(canvas.current.getContext("2d"));
+      setCanvasCtx(canvas.current.getContext('2d'));
     }
     if (navigator.mediaDevices?.getUserMedia) {
       const constraints = {
@@ -49,7 +49,7 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
         console.log(err);
       }
     } else {
-      console.log("getUserMedia not supported by your browser");
+      console.log('getUserMedia not supported by your browser');
     }
   };
 
@@ -57,10 +57,10 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
     if (canvasCtx && canvas.current && video.current) {
       video.current.pause();
       canvasCtx.drawImage(video.current, 0, 0);
-      const dataURL = canvas.current.toDataURL("image/png");
+      const dataURL = canvas.current.toDataURL('image/png');
       const blob = await (await fetch(dataURL)).blob();
       const file = new File([blob], `webcam-${Date.now()}.jpg`, {
-        type: "image/jpeg",
+        type: 'image/jpeg',
         lastModified: Date.now(),
       });
       setFile(file);
@@ -81,7 +81,7 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
       }
       setFile(null);
     } else {
-      alert("Please select an image");
+      alert('Please select an image');
     }
   };
 
@@ -111,22 +111,22 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
       ) : (
         <div>
           <div className="capture-preview-item">
-            <span>File name:</span>
+            <span className="capture-preview-field">File name:</span>
             <span>{file.name}</span>
           </div>
           <div className="capture-preview-item">
-            <span>File type:</span>
+            <span className="capture-preview-field">File type:</span>
             <span>{file.type}</span>
           </div>
           <div className="capture-preview-item">
-            <span>File size:</span>
+            <span className="capture-preview-field">File size:</span>
             <span>{file.size}</span>
           </div>
           <div className="capture-preview-item">
-            <span>File created at:</span>
+            <span className="capture-preview-field">File created at:</span>
             <span>{file.lastModified}</span>
           </div>
-          
+
           <button className="upload-button" onClick={handleSubmit}>
             Mint NFT
           </button>

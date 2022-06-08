@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import { CaptureIcon } from './CaptureIcon';
 import './imageCapture.css';
 import { LandscapeIcon } from './LandscapeIcon';
@@ -82,24 +82,24 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
       ) : (
         <>
           {imgSrc && (
-            <div>            
+            <div>
               <div className="upload-preview-wrapper">
                 <img className="upload-preview" src={imgSrc} alt="Preview" />
               </div>
               <div className="capture-preview-item">
-                <span>File name:</span>
+                <span className="capture-preview-field">File name:</span>
                 <span>{file.name}</span>
               </div>
               <div className="capture-preview-item">
-                <span>File type:</span>
+                <span className="capture-preview-field">File type:</span>
                 <span>{file.type}</span>
               </div>
               <div className="capture-preview-item">
-                <span>File size:</span>
+                <span className="capture-preview-field">File size:</span>
                 <span>{file.size}</span>
               </div>
               <div className="capture-preview-item">
-                <span>File created at:</span>
+                <span className="capture-preview-field">File created at:</span>
                 <span>{file.lastModified}</span>
               </div>
             </div>
