@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import { useState } from 'react';
 import { AppBottomNavigation } from "./components/AppBottomNavigation";
 import UserNFTGallery from './components/UserNFTGallery';
+import NFTMarketplace from "./components/NFTMarketplace";
 import { MintNFTView } from "./components/MintNFTView";
 import { AppViews } from './types';
 import "./App.css";
@@ -14,7 +15,7 @@ function App() {
   let body = null;
   switch (currentView) {
     case AppViews.MARKETPLACE:
-      body = 'NFT Marketplace';
+      body = <NFTMarketplace />;
       break;
     case AppViews.GALLERY:
       body = <UserNFTGallery />;
