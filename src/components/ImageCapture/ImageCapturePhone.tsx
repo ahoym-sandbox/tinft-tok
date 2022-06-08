@@ -1,7 +1,7 @@
 import * as React from "react";
-import { CaptureIcon } from "./CaptureIcon";
-import { UploadIcon } from "./UploadIcon";
-import "./imageCapture.css";
+import { CaptureIcon } from './CaptureIcon';
+import './imageCapture.css';
+import { LandscapeIcon } from './LandscapeIcon';
 
 interface ImageCapturePhoneProps {
   onSubmit?: (file: File) => void;
@@ -12,6 +12,7 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
   const { onSubmit, onChange } = props;
   const testEl = React.useRef<HTMLInputElement>(null);
   const [file, setFile] = React.useState<File | null>(null);
+  const [imgSrc, setImgSrc] = React.useState<string | null>(null);
 
   const handleOnChange: React.FormEventHandler<HTMLInputElement> = async (
     _event
@@ -39,14 +40,30 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
       }
       setFile(null);
     } else {
-      alert("Please select an image");
+      alert('Please select an image');
     }
   };
+
+  React.useEffect(() => {
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        setImgSrc(e.target?.result as string);
+        // $('#blah').attr('src', e.target.result).width(150).height(200);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  });
 
   return (
     <form onSubmit={handleSubmit}>
       {!file ? (
         <>
+          <div className="upload-preview-wrapper">
+            <LandscapeIcon />
+          </div>
           <input
             id="capture-input"
             className="capture-input"
@@ -64,8 +81,11 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
         </>
       ) : (
         <>
-          <UploadIcon />
-          <br />
+          {imgSrc && (
+            <div className="upload-preview-wrapper">
+              <img className="upload-preview" src={imgSrc} alt="Preview" />
+            </div>
+          )}
           <button className="upload-button" type="submit">
             Mint NFT from {file.name}
           </button>
