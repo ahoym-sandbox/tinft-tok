@@ -1,19 +1,17 @@
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem/ImageListItem";
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { useEffect, useState } from "react";
 import { convertHexToString, NFTokenMint } from "xrpl";
 import { nftDevNetXrplClient1 } from "../XrplSandbox/createClients";
 import { CLIENT_ONE_FAUCET_WALLET_SECRET } from "../XrplSandbox/scripts/CONFIG";
+import { NFTMetadata } from "../XrplSandbox/types";
 
 interface NFTsViewProps {}
 
-const getNftURL = (URI: string): string => {
-  const stringValue = convertHexToString(URI);
-  const originalMetadata = JSON.parse(stringValue);
-  console.log(stringValue);
-
-  return originalMetadata.url;
-};
+const getNftMetadata = (URI: string): NFTMetadata => {
+    return JSON.parse(convertHexToString(URI));
+}
 
 export const NFTsView: React.FC<NFTsViewProps> = (props) => {
   const [nfts, setNfts] = useState([]);
@@ -44,12 +42,17 @@ export const NFTsView: React.FC<NFTsViewProps> = (props) => {
         >
         {nfts.map((nft: NFTokenMint) =>
           nft.URI ? (
-            <ImageListItem key={nft.URI}>
+            <ImageListItem key={getNftMetadata(nft.URI).url}>
             <img
-              src={getNftURL(nft.URI)}
+              src={getNftMetadata(nft.URI).url}
               alt="alt"
               style={{ maxWidth: "400px" }}
             />
+            <ImageListItemBar
+            title={getNftMetadata(nft.URI).author}
+            subtitle={<span>{getNftMetadata(nft.URI).description}</span>}
+            position="below"
+          />
             </ImageListItem>
           ) : null
         )}
