@@ -90,7 +90,7 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
   }, []);
 
   return (
-    <>
+    <div className="capture-webcam-wrapper">
       <video
         id="video"
         className="video"
@@ -113,6 +113,6 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
           Mint NFT from {file.name}
         </button>
       )}
-    </>
+    </div>
   );
 };
