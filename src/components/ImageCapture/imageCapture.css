@@ -55,9 +55,9 @@
 }
 
 .upload-button:hover {
-  color: #61dafb;
-  border-color: #61dafb;
-  background-color: #000000;
+  color: white;
+  border: none;
+  background-color: #61dafb;
 }
 
 .upload-preview-wrapper {
