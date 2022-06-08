@@ -1,17 +1,24 @@
-export async function uploadFile(
-  fileContent: any,
-  fileExtension: string,
-  hexEncodedName: string
-) {
-  const formData = new FormData();
-  formData.append('file', fileContent);
-  formData.append('fileExtension', fileExtension);
-  formData.append('fileName', hexEncodedName);
+export async function uploadFile(file: File, hexEncodedName: string) {
+  const imageType = file.type.split('image/')[1];
+  const fileExtension = `.${imageType}`;
+
+  console.log(
+    'to be uploaded',
+    typeof file,
+    file.type,
+    fileExtension,
+    hexEncodedName
+  );
 
   try {
-    const response = await fetch('./netlify/functions/upload-file', {
+    const response = await fetch('/.netlify/functions/upload-file', {
       method: 'POST',
-      body: formData,
+      body: file,
+      headers: {
+        'X-EXTENSION': fileExtension,
+        'X-FILE-NAME': hexEncodedName,
+        'X-FILE-TYPE': file.type,
+      },
     });
     console.log('Uploaded succeeded', response);
     // const responseJson = await response.json();

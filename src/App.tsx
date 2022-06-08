@@ -1,10 +1,10 @@
-import { Container } from "@mui/material";
+import { Container } from '@mui/material';
 import { useState } from 'react';
-import { AppBottomNavigation } from "./components/AppBottomNavigation";
+import { AppBottomNavigation } from './components/AppBottomNavigation';
 import UserNFTGallery from './components/UserNFTGallery';
-import { MintNFTView } from "./components/MintNFTView";
+import { MintNFTView } from './components/MintNFTView';
 import { AppViews } from './types';
-import "./App.css";
+import './App.css';
 
 const HOME_VIEW = AppViews.MARKETPLACE;
 
@@ -25,8 +25,6 @@ function App() {
     default:
       body = 'NFT Marketplace';
   }
-
-  console.log('TEST LOG HERE', body);
 
   return (
     <div className="App">
