@@ -2,7 +2,8 @@ import { Container } from '@mui/material';
 import { useState } from 'react';
 import './App.css';
 import { AppBottomNavigation } from './components/AppBottomNavigation';
-// import { MintNFTView } from "./components/MintNFTView";
+// import { MintNFTView } from './components/MintNFTView';
+import { HomePage } from './components/Homepage';
 // import { NFTMarketplace } from "./components/NFTMarketplace";
 import UserNFTGallery from './components/UserNFTGallery';
 import { AppViews } from './types';
@@ -21,7 +22,8 @@ function App() {
       body = <UserNFTGallery />;
       break;
     case AppViews.MINT_IT:
-      body = 'Mint View';
+      // body = <MintNFTView />;
+      body = <HomePage />;
       break;
     default:
       body = 'NFT Marketplace';
