@@ -4,6 +4,7 @@ import UserNFTGallery from './components/UserNFTGallery';
 import { MintNFTView } from './components/MintNFTView';
 import { AppViews } from './types';
 import './App.css';
+import NFTMarketplace from './components/NFTMarketplace';
 
 const HOME_VIEW = AppViews.MARKETPLACE;
 const GALLERY_VIEW = AppViews.GALLERY;
@@ -14,7 +15,7 @@ function App() {
   let body = null;
   switch (currentView) {
     case AppViews.MARKETPLACE:
-      body = 'NFT Marketplace';
+      body = <NFTMarketplace />;
       break;
     case AppViews.GALLERY:
       body = <UserNFTGallery />;
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="AppContainer">
+      <div className="AppContainer w-full h-full">
         {body}
       </div>
       <AppBottomNavigation
