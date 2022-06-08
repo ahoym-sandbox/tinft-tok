@@ -26,7 +26,7 @@ const handler: Handler = async (event: Event, context: Context) => {
   const fileContent = event.body;
   const buf = Buffer.from(fileContent, 'base64');
 
-  new Promise((resolve, reject) => {
+  return new Promise<any>((resolve, reject) => {
     s3Client.upload(
       {
         Bucket: BUCKET_NAME,
