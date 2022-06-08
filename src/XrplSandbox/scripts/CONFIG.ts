@@ -8,8 +8,8 @@ const MUST_BE_REPLACED_VALUE = 'see-@link-for-tesnet-faucet';
  */
 
 // These are DEVNET creds and are hardcoded for the hackathon, don't do this in production.
-export const CLIENT_ONE_FAUCET_WALLET_SECRET = 'ssFphMdYkdzSyfXtg6nY4pyzG9g2t';
-export const CLIENT_TWO_FAUCET_WALLET_SECRET = 'sn4edqcn2E856TQ9RZm1EaC4B38gj';
+export const CLIENT_ONE_FAUCET_WALLET_SECRET = 'ssnBPCVhTkK5wGmUrJwnkQknEFZN9';
+export const CLIENT_TWO_FAUCET_WALLET_SECRET = 'snu8c8d11Vr7UKvJrcH5LeD6GoNy1';
 
 if (
   CLIENT_ONE_FAUCET_WALLET_SECRET === (MUST_BE_REPLACED_VALUE as string) ||
