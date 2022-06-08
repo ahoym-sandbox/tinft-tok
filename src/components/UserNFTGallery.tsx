@@ -32,23 +32,27 @@ const UserNFTGallery = () => {
       <h2>Your NFTs</h2>
       <div className="p-3">
         {!!nfts.length ? (
-          <ImageList
-            className="ImageList"
-            cols={2}
-            rowHeight={250}
-          >
+          <ImageList className="ImageList" cols={2} rowHeight={250}>
             {nfts.map((nft: NFTokenMint, idx) =>
               nft.URI ? (
                 <ImageListItem key={getNftMetadata(nft.URI).url + idx}>
-                  {getNftMetadata(nft.URI).fileType === "video/quicktime"
-                    ? <video height="150" controls src={getNftMetadata(nft.URI).url} />
-                    : <img
+                  {getNftMetadata(nft.URI).fileType === 'video/quicktime' ? (
+                    <video
+                      height="150"
+                      autoPlay
+                      muted
+                      loop
+                      controls
+                      src={getNftMetadata(nft.URI).url}
+                    />
+                  ) : (
+                    <img
                       src={getNftMetadata(nft.URI).url}
                       alt="alt"
                       style={{ maxWidth: '400px' }}
                       loading="lazy"
                     />
-                  }
+                  )}
                   <ImageListItemBar
                     title={getNftMetadata(nft.URI).author}
                     position="below"
