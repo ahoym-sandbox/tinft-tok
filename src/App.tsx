@@ -1,11 +1,10 @@
-
 import { Container } from "@mui/material";
-import "./App.css";
-import { AppBottomNavigation } from "./components/AppBottomNavigation";
 import { useState } from 'react';
+import { AppBottomNavigation } from "./components/AppBottomNavigation";
 import UserNFTGallery from './components/UserNFTGallery';
-import { AppViews } from './types';
 import { MintNFTView } from "./components/MintNFTView";
+import { AppViews } from './types';
+import "./App.css";
 
 const HOME_VIEW = AppViews.MARKETPLACE;
 
