@@ -8,7 +8,8 @@ export const mintNft = async (URI: string) => {
 
   const res = await nftDevNetXrplClient1.mintTransferableNft({ URI });
   console.log(res);
-  const nfts = await nftDevNetXrplClient1.viewOwnNfts();
-  console.log(nfts);
+
+  // TODO: either upload image with URI as name here of in the caller of this method
+
   return res;
 }
