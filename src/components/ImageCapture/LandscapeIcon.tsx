@@ -12,7 +12,7 @@ export const LandscapeIcon: React.FC = () => {
       width="100px"
       height="100px"
       viewBox="0 0 512 512"
-      enable-background="new 0 0 512 512"
+      enableBackground="new 0 0 512 512"
       xmlSpace="preserve"
     >
       <g>
