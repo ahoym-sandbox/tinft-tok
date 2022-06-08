@@ -5,6 +5,7 @@ import {
 } from '../utilities/metadataConverter';
 import { mintNft } from '../XrplSandbox/scripts/mintNFTWithMetadata';
 import { ImageCapture } from './ImageCapture/ImageCapture';
+import { v4 as uuidv4 } from 'uuid';
 
 interface MintNFTViewProps {
   redirectToGalleryView: () => void;
@@ -14,7 +15,8 @@ export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
   const { redirectToGalleryView } = props;
 
   const onSubmit = async (file: File) => {
-    const fileName = `${file.lastModified}-${file.name}`;
+    const extension = file.name.split('.')[1];
+    const fileName = `${uuidv4()}.${extension}`;
     const uploadResult = await uploadFile(file, fileName);
 
     console.log('uploadedResult', uploadResult);
