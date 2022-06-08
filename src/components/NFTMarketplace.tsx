@@ -18,11 +18,6 @@ const getNftMetadata = (URI: string): NFTMetadata => {
     return JSON.parse(convertHexToString(URI));
 };
 
-const purchaseNFT = () => {
-    console.log('CLICKED')
-    // user.createNftBuyOffer
-    // owner.acceptNftBuyOffer
-}
 
 const NFTMarketplace = () => {
     const [nfts, setNfts] = useState<any>([]);
@@ -78,7 +73,6 @@ const NFTMarketplace = () => {
                                     title={getNftMetadata(nft.URI).author}
                                     position="below"
                                 />
-                                <Button className="w-50" variant="contained" onClick={purchaseNFT}>Buy</Button>
 
                             </ImageListItem>
                         ) : null
