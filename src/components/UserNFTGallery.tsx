@@ -38,13 +38,13 @@ const UserNFTGallery = () => {
             cols={3}
             rowHeight={200}
           >
-            {nfts.map((nft: NFTokenMint) =>
+            {nfts.map((nft: NFTokenMint, idx) =>
               nft.URI ? (
-                <ImageListItem key={getNftMetadata(nft.URI).url}>
+                <ImageListItem key={getNftMetadata(nft.URI).url + idx}>
                   <img
                     src={getNftMetadata(nft.URI).url}
                     alt="alt"
-                    style={{ maxWidth: "400px" }}
+                    style={{ maxWidth: '400px' }}
                   />
                   <ImageListItemBar
                     title={getNftMetadata(nft.URI).author}
