@@ -6,7 +6,13 @@ import {
 import { mintNft } from '../XrplSandbox/scripts/mintNFTWithMetadata';
 import { ImageCapture } from './ImageCapture/ImageCapture';
 
-export const MintNFTView = () => {
+interface MintNFTViewProps {
+  redirectToGalleryView: () => void;
+}
+
+export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
+  const { redirectToGalleryView } = props;
+
   const onSubmit = async (file: File) => {
     const url = `https://ahoym-sandbox-tinft-tok.s3.amazonaws.com/${file.name}`;
     const metadata = buildMetadataFromFile(file, url);
@@ -16,6 +22,7 @@ export const MintNFTView = () => {
     console.log('uploadedResult', uploadResult);
     if (uploadResult.ok) {
       mintNft(URI);
+      redirectToGalleryView();
     }
   };
 
