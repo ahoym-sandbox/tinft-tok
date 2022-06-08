@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import "./App.css";
 import { AppBottomNavigation } from "./components/AppBottomNavigation";
-// import { MintNFTView } from "./components/MintNFTView";
+import { MintNFTView } from "./components/MintNFTView";
 // import { NFTMarketplace } from "./components/NFTMarketplace";
 import UserNFTGallery from "./components/UserNFTGallery";
 

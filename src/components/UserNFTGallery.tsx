@@ -11,6 +11,7 @@ import { CLIENT_ONE_FAUCET_WALLET_SECRET } from "../XrplSandbox/scripts/CONFIG";
 
 
 const getNftMetadata = (URI: string): NFTMetadata => {
+  console.log(JSON.parse(convertHexToString(URI)))
   return JSON.parse(convertHexToString(URI));
 };
 
@@ -48,9 +49,6 @@ const UserNFTGallery = () => {
                   />
                   <ImageListItemBar
                     title={getNftMetadata(nft.URI).author}
-                    subtitle={
-                      <span>{getNftMetadata(nft.URI).description}</span>
-                    }
                     position="below"
                   />
                 </ImageListItem>
