@@ -1,5 +1,4 @@
 import * as React from "react";
-import { extractMetadata } from "../../utilities";
 import { CaptureIcon } from "./CaptureIcon";
 import "./imageCapture.css";
 
