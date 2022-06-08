@@ -90,7 +90,7 @@
 .capture-preview-item {
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 330px;
   margin-bottom: 10px;
   padding: 0px 10px;
 }
