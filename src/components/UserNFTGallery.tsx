@@ -22,7 +22,7 @@ const UserNFTGallery = () => {
       .then(nftDevNetXrplClient1.viewOwnNfts)
       .then((res: any) => {
         console.log(res.result.account_nfts);
-        const nftList = res.result.account_nfts;
+        const nftList = res.result.account_nfts.reverse();
         if (!!nftList.length) setNfts(nftList);
       });
   }, []);
@@ -40,11 +40,15 @@ const UserNFTGallery = () => {
             {nfts.map((nft: NFTokenMint, idx) =>
               nft.URI ? (
                 <ImageListItem key={getNftMetadata(nft.URI).url + idx}>
-                  <img
-                    src={getNftMetadata(nft.URI).url}
-                    alt="alt"
-                    style={{ maxWidth: '400px' }}
-                  />
+                  {getNftMetadata(nft.URI).fileType === "video/quicktime"
+                    ? <video height="150" controls src={getNftMetadata(nft.URI).url} />
+                    : <img
+                      src={getNftMetadata(nft.URI).url}
+                      alt="alt"
+                      style={{ maxWidth: '400px' }}
+                      loading="lazy"
+                    />
+                  }
                   <ImageListItemBar
                     title={getNftMetadata(nft.URI).author}
                     position="below"
