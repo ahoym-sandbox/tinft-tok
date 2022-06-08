@@ -2,17 +2,12 @@ import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
-import Button from '@mui/material/Button';
 import { convertHexToString, NFTokenMint } from "xrpl";
 import { NFTMetadata } from "../XrplSandbox/types";
 import EmptyState from "./EmptyState";
 import { useEffect, useState } from "react";
 import { nftDevNetXrplClient1, nftDevNetXrplClient2 } from "../XrplSandbox/createClients";
 import { CLIENT_ONE_FAUCET_WALLET_SECRET, CLIENT_TWO_FAUCET_WALLET_SECRET } from "../XrplSandbox/scripts/CONFIG";
-import { AccountNFTsResponse } from 'xrpl';
 
 const getNftMetadata = (URI: string): NFTMetadata => {
     return JSON.parse(convertHexToString(URI));
