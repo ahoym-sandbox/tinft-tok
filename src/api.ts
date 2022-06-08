@@ -9,11 +9,11 @@ export async function uploadFile(
   formData.append('fileName', hexEncodedName);
 
   try {
-    const response = await fetch('./netlify/functions/upload-file', {
+    const response = await fetch('/.netlify/functions/upload-file', {
       method: 'POST',
       body: formData,
     });
-    console.log('Uploaded succeeded', response);
+    console.log('Fetch response', response);
     // const responseJson = await response.json();
     // console.log('Uploaded succeededk JSON', responseJson);
     return response;
