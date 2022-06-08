@@ -53,6 +53,10 @@ export function generateNftDevnetXrplClient() {
 
 export const nftDevNetXrplClient1 = generateNftDevnetXrplClient();
 export const nftDevNetXrplClient2 = generateNftDevnetXrplClient();
+export const nftDevNetXrplClient3 = generateNftDevnetXrplClient();
+
+export const DEVNETCLIENTS = [nftDevNetXrplClient1, nftDevNetXrplClient2, nftDevNetXrplClient3]
+
 
 console.log('🎉 Welcome! 🎉');
 console.log('Access any of the following clients in the web console:');
