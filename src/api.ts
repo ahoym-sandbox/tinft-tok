@@ -14,8 +14,8 @@ export async function uploadFile(
       body: formData,
     });
     console.log('Uploaded succeeded', response);
-    const responseJson = await response.json();
-    console.log('Uploaded succeededk JSON', responseJson);
+    // const responseJson = await response.json();
+    // console.log('Uploaded succeededk JSON', responseJson);
     return response;
   } catch (error) {
     console.error('Error happened!', error);
