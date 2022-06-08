@@ -6,7 +6,13 @@ import {
 import { mintNft } from '../XrplSandbox/scripts/mintNFTWithMetadata';
 import { ImageCapture } from './ImageCapture/ImageCapture';
 
-export const MintNFTView = () => {
+interface MintNFTViewProps {
+  redirectToGalleryView: () => void;
+}
+
+export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
+  const { redirectToGalleryView } = props;
+
   const onSubmit = async (file: File) => {
     const fileName = `${file.lastModified}-${file.name}`;
     const uploadResult = await uploadFile(file, fileName);
@@ -17,6 +23,7 @@ export const MintNFTView = () => {
       const metadata = buildMetadataFromFile(file, url);
       const URI = convertNFTMetadatToHex(metadata);
       mintNft(URI);
+      redirectToGalleryView();
     }
   };
 
