@@ -23,7 +23,7 @@ const NFTMarketplace = () => {
         async function getNFTs() {
             const nftlist = await Promise.all(
                 accounts.map(async (account, index) => {
-                    const res = await account.generateWallet(secrets[index])
+                    await account.generateWallet(secrets[index])
                     return account.viewOwnNfts()
 
                 }))
@@ -37,7 +37,7 @@ const NFTMarketplace = () => {
 
         getNFTs();
 
-    }, []);
+    });
 
     useEffect(() => {
         console.log('NFTs: ', nfts)
