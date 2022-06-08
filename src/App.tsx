@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import { useState } from 'react';
 import { AppBottomNavigation } from "./components/AppBottomNavigation";
 import UserNFTGallery from './components/UserNFTGallery';
@@ -30,9 +29,9 @@ function App() {
 
   return (
     <div className="App">
-      <Container sx={{ minHeight: '500px', padding: '32px 16px 16px' }}>
+      <div className="AppContainer">
         {body}
-      </Container>
+      </div>
       <AppBottomNavigation
         currentView={currentView}
         onViewChange={setCurrentView}

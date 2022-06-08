@@ -29,14 +29,14 @@ const UserNFTGallery = () => {
   }, []);
 
   return (
-    <div className="UserNFTGallery mt-10 flex flex-col mx-10">
-      <div className="w-full inline-block p-3 align-middle rounded-md shadow-md">
+    <div className="UserNFTGallery">
+      <h2>Your NFTs</h2>
+      <div className="p-3">
         {!!nfts.length ? (
           <ImageList
-            sx={{ height: 650 }}
-            variant="quilted"
-            cols={3}
-            rowHeight={200}
+            className="ImageList"
+            cols={2}
+            rowHeight={250}
           >
             {nfts.map((nft: NFTokenMint, idx) =>
               nft.URI ? (

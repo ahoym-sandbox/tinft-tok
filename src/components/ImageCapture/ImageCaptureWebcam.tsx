@@ -109,9 +109,28 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
           <CaptureIcon />
         </div>
       ) : (
-        <button className="upload-button" onClick={handleSubmit}>
-          Mint NFT from {file.name}
-        </button>
+        <div>
+          <div className="capture-preview-item">
+            <span>File name:</span>
+            <span>{file.name}</span>
+          </div>
+          <div className="capture-preview-item">
+            <span>File type:</span>
+            <span>{file.type}</span>
+          </div>
+          <div className="capture-preview-item">
+            <span>File size:</span>
+            <span>{file.size}</span>
+          </div>
+          <div className="capture-preview-item">
+            <span>File created at:</span>
+            <span>{file.lastModified}</span>
+          </div>
+          
+          <button className="upload-button" onClick={handleSubmit}>
+            Mint NFT
+          </button>
+        </div>
       )}
     </div>
   );

@@ -87,7 +87,7 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
             </div>
           )}
           <button className="upload-button" type="submit">
-            Mint NFT from {file.name}
+            Mint NFT
           </button>
         </>
       )}
