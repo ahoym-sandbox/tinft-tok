@@ -35,16 +35,12 @@ export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
       const url = `https://ahoym-sandbox-tinft-tok.s3.amazonaws.com/${fileName}`;
       const metadata = buildMetadataFromFile(file, url);
       const URI = convertNFTMetadatToHex(metadata);
-      try {
-        await mintNft(URI);
-        setShowConfetti(true);
-        setTimeout(() => {
-          setShowConfetti(false);
-          redirectToGalleryView();
-        }, 1000);
-      } catch (e) {
-        console.error('hopefully this never happens :) ...', e);
-      }
+      mintNft(URI);
+      setShowConfetti(true);
+      setTimeout(() => {
+        setShowConfetti(false);
+        redirectToGalleryView();
+      }, 1000);
     }
   };
 
