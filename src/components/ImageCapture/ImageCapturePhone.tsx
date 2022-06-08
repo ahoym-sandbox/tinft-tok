@@ -82,8 +82,10 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
       ) : (
         <>
           {imgSrc && (
-            <div className="upload-preview-wrapper">
-              <img className="upload-preview" src={imgSrc} alt="Preview" />
+            <div>            
+              <div className="upload-preview-wrapper">
+                <img className="upload-preview" src={imgSrc} alt="Preview" />
+              </div>
               <div className="capture-preview-item">
                 <span>File name:</span>
                 <span>{file.name}</span>
