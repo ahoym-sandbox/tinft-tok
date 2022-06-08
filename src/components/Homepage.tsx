@@ -1,19 +1,19 @@
-import { Container } from "@mui/system";
-import { useState } from "react";
-import Button from "@mui/material/Button";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import Camera from "react-html5-camera-photo";
-import "react-html5-camera-photo/build/css/index.css";
+import { Container } from '@mui/system';
+import { useState } from 'react';
+import Button from '@mui/material/Button';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Camera from 'react-html5-camera-photo';
+import 'react-html5-camera-photo/build/css/index.css';
 
-import { MintNFTForm } from "./MintNFTForm";
-import { useEffect } from "react";
-import { nftDevNetXrplClient1 } from "../XrplSandbox/createClients";
-import { CLIENT_ONE_FAUCET_WALLET_SECRET } from "../XrplSandbox/scripts/CONFIG";
+import { MintNFTForm } from './MintNFTForm';
+import { useEffect } from 'react';
+import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
+import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
 
 export const HomePage = () => {
   const [showCamera, setShowCamera] = useState(false);
-  const [previewUri, setPreviewUri] = useState("");
-  const [mintedNfts, setMintedNfts] = useState([]);
+  const [previewUri, setPreviewUri] = useState('');
+  const [, setMintedNfts] = useState([]);
 
   useEffect(() => {
     nftDevNetXrplClient1
@@ -38,7 +38,7 @@ export const HomePage = () => {
         <div className=""></div>
       </header>
       <main>
-        <Container className="flex" style={{ padding: "24px" }}>
+        <Container className="flex" style={{ padding: '24px' }}>
           {!showCamera && !previewUri.length && (
             <label htmlFor="contained-button-file">
               <Button
@@ -46,12 +46,12 @@ export const HomePage = () => {
                 component="span"
                 onClick={() => setShowCamera(true)}
                 style={{
-                  marginTop: "20px",
+                  marginTop: '20px',
                 }}
               >
                 Take NFT Photo
                 <span> </span>
-                <PhotoCamera style={{ marginLeft: "10px" }} />
+                <PhotoCamera style={{ marginLeft: '10px' }} />
               </Button>
             </label>
           )}
