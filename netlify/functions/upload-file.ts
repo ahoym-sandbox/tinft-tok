@@ -20,7 +20,6 @@ const handler: Handler = async (event: Event, context: Context) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const fileExtension = event.headers['x-extension'];
   const fileName = event.headers['x-file-name'];
   const fileType = event.headers['x-file-type'];
   const fileContent = event.body;
@@ -30,7 +29,7 @@ const handler: Handler = async (event: Event, context: Context) => {
     s3Client.upload(
       {
         Bucket: BUCKET_NAME,
-        Key: path.basename(`${fileName}${fileExtension}`),
+        Key: path.basename(fileName),
         Body: buf,
         ContentEncoding: 'base64',
         ContentType: fileType,

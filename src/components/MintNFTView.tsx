@@ -8,13 +8,14 @@ import { ImageCapture } from './ImageCapture/ImageCapture';
 
 export const MintNFTView = () => {
   const onSubmit = async (file: File) => {
-    const url = `https://ahoym-sandbox-tinft-tok.s3.amazonaws.com/${file.name}`;
-    const metadata = buildMetadataFromFile(file, url);
-    const URI = convertNFTMetadatToHex(metadata);
+    const fileName = `${file.lastModified}-${file.name}`;
+    const uploadResult = await uploadFile(file, fileName);
 
-    const uploadResult = await uploadFile(file, URI);
     console.log('uploadedResult', uploadResult);
     if (uploadResult.ok) {
+      const url = `https://ahoym-sandbox-tinft-tok.s3.amazonaws.com/${fileName}`;
+      const metadata = buildMetadataFromFile(file, url);
+      const URI = convertNFTMetadatToHex(metadata);
       mintNft(URI);
     }
   };

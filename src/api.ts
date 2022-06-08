@@ -1,4 +1,4 @@
-export async function uploadFile(file: File, hexEncodedName: string) {
+export async function uploadFile(file: File, fileName: string) {
   const imageType = file.type.split('image/')[1];
   const fileExtension = `.${imageType}`;
 
@@ -7,7 +7,7 @@ export async function uploadFile(file: File, hexEncodedName: string) {
     typeof file,
     file.type,
     fileExtension,
-    hexEncodedName
+    fileName
   );
 
   try {
@@ -15,8 +15,7 @@ export async function uploadFile(file: File, hexEncodedName: string) {
       method: 'POST',
       body: file,
       headers: {
-        'X-EXTENSION': fileExtension,
-        'X-FILE-NAME': hexEncodedName,
+        'X-FILE-NAME': fileName,
         'X-FILE-TYPE': file.type,
       },
     });
