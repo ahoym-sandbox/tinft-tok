@@ -5,6 +5,7 @@ import { MintNFTView } from './components/MintNFTView';
 import { AppViews } from './types';
 import './App.css';
 import NFTMarketplace from './components/NFTMarketplace';
+import { TopNavigation } from './components/TopNavigation';
 
 const HOME_VIEW = AppViews.MARKETPLACE;
 const GALLERY_VIEW = AppViews.GALLERY;
@@ -21,7 +22,11 @@ function App() {
       body = <UserNFTGallery />;
       break;
     case AppViews.MINT_IT:
-      body = <MintNFTView redirectToGalleryView={() => setCurrentView(GALLERY_VIEW)} />;
+      body = (
+        <MintNFTView
+          redirectToGalleryView={() => setCurrentView(GALLERY_VIEW)}
+        />
+      );
       break;
     default:
       body = 'NFT Marketplace';
@@ -29,9 +34,8 @@ function App() {
 
   return (
     <div className="App">
-      <div className="AppContainer w-full h-full">
-        {body}
-      </div>
+      <TopNavigation />
+      <div className="AppContainer w-full h-full">{body}</div>
       <AppBottomNavigation
         currentView={currentView}
         onViewChange={setCurrentView}

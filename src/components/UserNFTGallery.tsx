@@ -1,13 +1,13 @@
-import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import { convertHexToString, NFTokenMint } from 'xrpl';
-import { NFTMetadata } from '../XrplSandbox/types';
-import EmptyState from './EmptyState';
+import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { convertHexToString, NFTokenMint } from 'xrpl';
 import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
 import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
+import { NFTMetadata } from '../XrplSandbox/types';
+import EmptyState from './EmptyState';
 
 const getNftMetadata = (URI: string): NFTMetadata => {
   return JSON.parse(convertHexToString(URI));
@@ -29,7 +29,6 @@ const UserNFTGallery = () => {
 
   return (
     <div className="UserNFTGallery">
-      <h2>Your NFTs</h2>
       <div className="p-3">
         {!!nfts.length ? (
           <ImageList className="ImageList" cols={2} rowHeight={250}>

@@ -16,21 +16,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -40,22 +25,16 @@
   }
 }
 
-.App-logs {
-  text-align: left;
-  font-size: 12px;
-}
-
-.App-console-log {
-  font-size: 14px;
-  color: darkorange;
-}
-
 .AppContainer {
-  padding: 32px 16px 16px;
+  padding: 64px 16px 16px;
 }
 
 @media only screen and (min-width: 601px) {
   .AppContainer {
     height: 600px;
   }
+}
+
+body {
+  background-color: #fff;
 }

@@ -5,14 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #efefef;
+  background-color: #fff;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 
 @media only screen and (max-width: 600px) {
   .AppBottomNavigation {
@@ -21,13 +20,13 @@ code {
     width: 100%;
     border-top: 1px solid #efefef;
   }
-  
+
   .ImageList {
     min-height: 500px;
   }
 }
 
-@media only screen and (min-width: 601px) {  
+@media only screen and (min-width: 601px) {
   .ImageList {
     max-height: 500px;
     overflow: scroll;
