@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { EnvironmentSelector } from './components/EnvironmentSelector';
+import { ImageCapture } from './components/ImageCapture/ImageCapture';
 import { XrplClientGenerator } from './components/XrplClientGenerator';
 import { XrplClientsList } from './components/XrplClientsList';
+import { extractMetadata } from './utilities';
 import { xrplClient1, xrplClient2 } from './XrplSandbox/createClients';
 
 // Can import and run TS scripts this way if so desired
@@ -22,6 +24,13 @@ const generateWalletRequestTwo = xrplClient2.generateWallet();
 
 function App() {
   const [logs, setLogs] = useState<unknown[]>([]);
+
+  const onImageSubmit = (file: File) => {
+    extractMetadata(file);
+    alert(
+      `Submitted ${file.name}, created at ${file.lastModified}, size ${file.size}.`
+    );
+  };
 
   useEffect(() => {
     generateWalletRequestOne.then((result) => {
@@ -77,6 +86,8 @@ function App() {
         >
           XRPL Testnet Explorer
         </a>
+
+        <ImageCapture onSubmit={onImageSubmit} />
 
         <XrplClientGenerator />
 
