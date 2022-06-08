@@ -36,8 +36,6 @@ const NFTMarketplace = () => {
 
   return (
     <div className="px-4">
-      <h2 className="mb-4 font-semibold">Marketplace</h2>
-      <hr className="my-4" />
       {!!nfts.length ? (
         <ImageList className="ImageList" cols={2} gap={4} variant="standard">
           {nfts.map((nft: NFTokenMint, idx: any) =>
