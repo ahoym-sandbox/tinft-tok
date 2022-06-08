@@ -8,7 +8,6 @@
     "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.3",
     "@netlify/functions": "^1.0.0",
-    "@types/react-html5-camera-photo": "^1.5.1",
     "aws-sdk": "^2.1150.0",
     "netlify-cli": "^10.4.0",
     "react": "^18.1.0",
@@ -21,7 +20,8 @@
   "devDependencies": {
     "@types/node": "^16.11.38",
     "@types/react": "^18.0.11",
-    "@types/react-dom": "^18.0.5"
+    "@types/react-dom": "^18.0.5",
+    "@types/react-html5-camera-photo": "^1.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
