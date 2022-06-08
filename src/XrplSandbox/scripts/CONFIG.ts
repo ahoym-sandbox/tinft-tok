@@ -6,6 +6,7 @@ const MUST_BE_REPLACED_VALUE = 'see-@link-for-tesnet-faucet';
  *
  * {@link https://xrpl.org/xrp-testnet-faucet.html}
  */
+// These are DEVNET creds and are hardcoded for the hackathon, don't do this in production.
 export const CLIENT_ONE_FAUCET_WALLET_SECRET = 'sneKLtq1JJG66A87Enp2BMvHfQajG';
 export const CLIENT_TWO_FAUCET_WALLET_SECRET = 'sn4edqcn2E856TQ9RZm1EaC4B38gj';
 
