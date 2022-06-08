@@ -52,6 +52,8 @@
   background-color: transparent;
   border: 1px solid #61dafb;
   border-radius: 5px;
+  margin-top: 10px;
+  width: 200px;
 }
 
 .upload-button:hover {
@@ -83,4 +85,12 @@
   margin: 10px;
   height: 250px;
   width: auto;
+}
+
+.capture-preview-item {
+  display: flex;
+  justify-content: space-between;
+  width: 330px;
+  margin-bottom: 10px;
+  padding: 0px 10px;
 }
