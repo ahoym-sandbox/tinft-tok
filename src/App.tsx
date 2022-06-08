@@ -6,7 +6,7 @@ import { AppViews } from './types';
 import './App.css';
 
 const HOME_VIEW = AppViews.MARKETPLACE;
-export const GALLERY_VIEW = AppViews.GALLERY;
+const GALLERY_VIEW = AppViews.GALLERY;
 
 function App() {
   const [currentView, setCurrentView] = useState(HOME_VIEW);
