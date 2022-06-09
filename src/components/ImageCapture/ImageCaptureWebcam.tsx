@@ -1,3 +1,4 @@
+import CircularProgress from '@mui/material/CircularProgress';
 import * as React from 'react';
 import { CaptureIcon } from './CaptureIcon';
 import './imageCapture.css';
@@ -5,12 +6,13 @@ import './imageCapture.css';
 interface ImageCaptureWebcamProps {
   onSubmit?: (file: File) => void;
   onChange?: (file: File | null) => void;
+  loading?: boolean;
 }
 
 export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
   props
 ) => {
-  const { onSubmit, onChange } = props;
+  const { onSubmit, onChange, loading } = props;
   const [file, setFile] = React.useState<File | null>(null);
   const [canvasCtx, setCanvasCtx] =
     React.useState<CanvasRenderingContext2D | null>();
@@ -91,12 +93,25 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
 
   return (
     <div className="capture-webcam-wrapper">
-      <video
-        id="video"
-        className="video"
-        ref={video}
-        autoPlay={autoPlay}
-      ></video>
+      <div className="capture-webcam-video-container">
+        <div className="capture-webcom-video-loader">
+          {loading ? (
+            <CircularProgress
+              size={150}
+              sx={{
+                color: '#61dafb',
+                opacity: '0.75',
+              }}
+            />
+          ) : null}
+        </div>
+        <video
+          id="video"
+          className="video"
+          ref={video}
+          autoPlay={autoPlay}
+        ></video>
+      </div>
       <canvas
         id="myCanvas"
         ref={canvas}
@@ -127,7 +142,11 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
             <span>{file.lastModified}</span>
           </div>
 
-          <button className="upload-button" onClick={handleSubmit}>
+          <button
+            className="upload-button"
+            onClick={handleSubmit}
+            disabled={loading}
+          >
             Mint NFT
           </button>
         </div>
