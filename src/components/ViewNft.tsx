@@ -1,38 +1,53 @@
-import { ImageListItem, ImageListItemBar } from '@mui/material';
-import { NFTokenMint } from 'xrpl';
+import { ImageListItem } from '@mui/material';
 import { getNftMetadata } from '../utilities';
+import { NFT } from '../XrplSandbox/types';
 
 type ViewNftProps = {
-  nft: NFTokenMint;
+  nft: NFT;
 };
 
 export const ViewNft = ({ nft }: ViewNftProps) => {
   const nftMetadata = nft.URI ? getNftMetadata(nft.URI) : null;
 
   return (
-    <div>
+    <div className="ImageList">
       {nftMetadata && (
-        <ImageListItem>
-          {nftMetadata.fileType === 'video/quicktime' ? (
-            <video
-              height="150"
-              autoPlay
-              muted
-              loop
-              controls
-              src={nftMetadata.url}
-            />
-          ) : (
-            <img
-              src={nftMetadata.url}
-              alt="alt"
-              style={{ maxWidth: '400px' }}
-              loading="lazy"
-            />
-          )}
-          <ImageListItemBar title={nftMetadata.author} position="below" />
-        </ImageListItem>
+        <>
+          <ImageListItem>
+            {nftMetadata.fileType === 'video/quicktime' ? (
+              <video
+                height="150"
+                autoPlay
+                muted
+                loop
+                controls
+                src={nftMetadata.url}
+              />
+            ) : (
+              <img
+                src={nftMetadata.url}
+                alt="alt"
+                style={{ maxWidth: '400px' }}
+                loading="lazy"
+              />
+            )}
+          </ImageListItem>
+          <div className="my-3">
+            <p className="capture-preview-field">Author</p>
+            <p>{nftMetadata.author}</p>
+          </div>
+        </>
       )}
+
+      <div className="my-3">
+        <p className="capture-preview-field">NFTokenID</p>
+        <p>{nft.NFTokenID}</p>
+      </div>
+
+      <div className="my-3">
+        <p className="capture-preview-field">Original Issuer</p>
+        <p>{nft.Issuer}</p>
+      </div>
     </div>
   );
 };

@@ -1,15 +1,15 @@
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { useEffect, useState } from 'react';
-import { NFTokenMint } from 'xrpl';
 import { APP_ACCOUNTS } from '../app-accounts';
 import { getNftMetadata } from '../utilities';
 import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
 import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
+import { NFT } from '../XrplSandbox/types';
 import EmptyState from './EmptyState';
 
 type NFTMarketplaceProps = {
-  onViewChange: (nft: NFTokenMint) => void;
+  onViewChange: (nft: NFT) => void;
 };
 
 const NFTMarketplace = ({ onViewChange }: NFTMarketplaceProps) => {
@@ -39,7 +39,7 @@ const NFTMarketplace = ({ onViewChange }: NFTMarketplaceProps) => {
     <div className="px-4">
       {!!nfts.length ? (
         <ImageList className="ImageList" cols={2} gap={4} variant="standard">
-          {nfts.map((nft: NFTokenMint, idx: any) =>
+          {nfts.map((nft: NFT, idx: any) =>
             nft.URI ? (
               <ImageListItem
                 key={getNftMetadata(nft.URI).url + idx}

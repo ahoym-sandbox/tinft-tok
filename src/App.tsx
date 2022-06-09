@@ -1,25 +1,25 @@
 import { useState } from 'react';
-import { AppBottomNavigation } from './components/AppBottomNavigation';
-import UserNFTGallery from './components/UserNFTGallery';
-import { MintNFTView } from './components/MintNFTView';
-import { AppViews } from './types';
 import './App.css';
+import { AppBottomNavigation } from './components/AppBottomNavigation';
+import { MintNFTView } from './components/MintNFTView';
 import NFTMarketplace from './components/NFTMarketplace';
 import { TopNavigation } from './components/TopNavigation';
+import UserNFTGallery from './components/UserNFTGallery';
 import { VerifyNft } from './components/VerifyNft';
-import { NFTokenMint } from 'xrpl';
 import { ViewNft } from './components/ViewNft';
+import { AppViews } from './types';
+import { NFT } from './XrplSandbox/types';
 
 function App() {
   const [currentView, setCurrentView] = useState(AppViews.MARKETPLACE);
-  const [selectedNft, setSelectedNft] = useState<NFTokenMint | null>(null);
+  const [selectedNft, setSelectedNft] = useState<NFT | null>(null);
 
   let body = null;
   switch (currentView) {
     case AppViews.MARKETPLACE:
       body = (
         <NFTMarketplace
-          onViewChange={(nft: NFTokenMint) => {
+          onViewChange={(nft: NFT) => {
             setSelectedNft(nft);
             setCurrentView(AppViews.VIEW_NFT);
           }}
@@ -29,7 +29,7 @@ function App() {
     case AppViews.GALLERY:
       body = (
         <UserNFTGallery
-          onViewChange={(nft: NFTokenMint) => {
+          onViewChange={(nft: NFT) => {
             setSelectedNft(nft);
             setCurrentView(AppViews.VIEW_NFT);
           }}

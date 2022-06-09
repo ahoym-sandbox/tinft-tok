@@ -7,6 +7,7 @@ export interface NFT {
   NFTokenID: string;
   NFTokenTaxon: number;
   nft_serial: number;
+  URI?: string;
 }
 
 /** Properties provided by the sandbox XrplClient */

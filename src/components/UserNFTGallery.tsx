@@ -1,16 +1,15 @@
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { NFTokenMint } from 'xrpl';
 import { getNftMetadata } from '../utilities';
 import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
 import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
+import { NFT } from '../XrplSandbox/types';
 import EmptyState from './EmptyState';
 
 type UserNFTGalleryProps = {
-  onViewChange: (nft: NFTokenMint) => void;
+  onViewChange: (nft: NFT) => void;
 };
 
 const UserNFTGallery = ({ onViewChange }: UserNFTGalleryProps) => {
@@ -32,7 +31,7 @@ const UserNFTGallery = ({ onViewChange }: UserNFTGalleryProps) => {
       <div className="p-3">
         {!!nfts.length ? (
           <ImageList className="ImageList" cols={2} rowHeight={250}>
-            {nfts.map((nft: NFTokenMint, idx) =>
+            {nfts.map((nft: NFT, idx) =>
               nft.URI ? (
                 <ImageListItem
                   key={getNftMetadata(nft.URI).url + idx}
