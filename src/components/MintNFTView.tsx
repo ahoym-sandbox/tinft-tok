@@ -15,6 +15,7 @@ interface MintNFTViewProps {
 
 export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
   const { redirectToGalleryView } = props;
+  const [submitting, setSubmitting] = React.useState<boolean>(false);
   const [showConfetti, setShowConfetti] = React.useState<boolean>(false);
   const width = Math.max(
     document.documentElement.clientWidth || 0,
@@ -26,9 +27,9 @@ export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
   );
 
   const onSubmit = async (file: File) => {
+    setSubmitting(true);
     const extension = file.name.split('.')[1];
     const fileName = `${uuidv4()}.${extension}`;
-    setShowConfetti(true); // What could go wrong? :)
     const uploadResult = await uploadFile(file, fileName);
     console.log('uploadedResult', uploadResult);
     if (uploadResult.ok) {
@@ -36,12 +37,21 @@ export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
       const metadata = buildMetadataFromFile(file, url);
       const URI = convertNFTMetadatToHex(metadata);
       await mintNft(URI);
-      setShowConfetti(false);
-      setTimeout(() => {
-        redirectToGalleryView();
-      }, 100);
     }
-  };;
+
+    // await new Promise((res) => {
+    //   setTimeout(() => {
+    //     res(setSubmitting(false));
+    //   }, 1000);
+    // });
+
+    setSubmitting(false);
+    setShowConfetti(true);
+    setTimeout(() => {
+      setShowConfetti(false);
+      redirectToGalleryView();
+    }, 2000);
+  };
 
   return (
     <div>
@@ -53,7 +63,7 @@ export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
           initialVelocityX={10}
         />
       )}
-      <ImageCapture onSubmit={onSubmit} onChange={() => {}} />
+      <ImageCapture onSubmit={onSubmit} loading={submitting} />
     </div>
   );
 };

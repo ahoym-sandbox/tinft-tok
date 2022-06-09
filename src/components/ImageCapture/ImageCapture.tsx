@@ -7,10 +7,11 @@ import { ImageCaptureWebcam } from './ImageCaptureWebcam';
 interface ImageCaptureProps {
   onSubmit?: (file: File) => void;
   onChange?: (file: File | null) => void;
+  loading?: boolean;
 }
 
 export const ImageCapture: React.FC<ImageCaptureProps> = (props) => {
-  const { onChange, onSubmit } = props;
+  const { onChange, onSubmit, loading } = props;
 
   const isUserOnMobile = function () {
     let check = false;
@@ -29,8 +30,20 @@ export const ImageCapture: React.FC<ImageCaptureProps> = (props) => {
   };
 
   if (isUserOnMobile()) {
-    return <ImageCapturePhone onChange={onChange} onSubmit={onSubmit} />;
+    return (
+      <ImageCapturePhone
+        onChange={onChange}
+        onSubmit={onSubmit}
+        loading={loading}
+      />
+    );
   } else {
-    return <ImageCaptureWebcam onChange={onChange} onSubmit={onSubmit} />;
+    return (
+      <ImageCaptureWebcam
+        onChange={onChange}
+        onSubmit={onSubmit}
+        loading={loading}
+      />
+    );
   }
 };
