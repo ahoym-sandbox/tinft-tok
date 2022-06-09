@@ -35,7 +35,8 @@ const UserNFTGallery = ({ onViewChange }: UserNFTGalleryProps) => {
             {nfts.map((nft: NFT, idx) =>
               nft.URI ? (
                 <ImageListItem
-                  key={getNftMetadata(nft.URI).url + idx}
+                  key={nft.NFTokenID}
+                  data-id={nft.NFTokenID}
                   onClick={() => onViewChange(nft)}
                 >
                   {getNftMetadata(nft.URI).fileType === 'video/quicktime' ? (
