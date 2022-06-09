@@ -3,8 +3,10 @@ import ImageListItem from '@mui/material/ImageListItem/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { useEffect, useState } from 'react';
 import { getNftMetadata } from '../utilities';
-import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
-import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
+import {
+  nftDevNetXrplClient1,
+  promiseNftDevNXrplClient1,
+} from '../XrplSandbox/createClients';
 import { NFT } from '../XrplSandbox/types';
 import EmptyState from './EmptyState';
 
@@ -16,8 +18,7 @@ const UserNFTGallery = ({ onViewChange }: UserNFTGalleryProps) => {
   const [nfts, setNfts] = useState([]);
 
   useEffect(() => {
-    nftDevNetXrplClient1
-      .generateWallet(CLIENT_ONE_FAUCET_WALLET_SECRET)
+    promiseNftDevNXrplClient1
       .then(nftDevNetXrplClient1.viewOwnNfts)
       .then((res: any) => {
         console.log(res.result.account_nfts);

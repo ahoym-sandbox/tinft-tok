@@ -6,6 +6,7 @@ import {
   TEST_NET,
   TEST_NET_EXPLORER,
 } from './constants';
+import { CLIENT_ONE_FAUCET_WALLET_SECRET } from './scripts/CONFIG';
 import { XrplClient } from './XrplClient';
 
 function listExplorers() {
@@ -53,6 +54,10 @@ export function generateNftDevnetXrplClient() {
 
 export const nftDevNetXrplClient1 = generateNftDevnetXrplClient();
 export const nftDevNetXrplClient2 = generateNftDevnetXrplClient();
+
+export const promiseNftDevNXrplClient1 = nftDevNetXrplClient1.generateWallet(
+  CLIENT_ONE_FAUCET_WALLET_SECRET
+);
 
 console.log('🎉 Welcome! 🎉');
 console.log('Access any of the following clients in the web console:');

@@ -3,8 +3,10 @@ import ImageListItem from '@mui/material/ImageListItem';
 import { useEffect, useState } from 'react';
 import { APP_ACCOUNTS } from '../app-accounts';
 import { getNftMetadata } from '../utilities';
-import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
-import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
+import {
+  nftDevNetXrplClient1,
+  promiseNftDevNXrplClient1,
+} from '../XrplSandbox/createClients';
 import { NFT } from '../XrplSandbox/types';
 import EmptyState from './EmptyState';
 
@@ -19,9 +21,9 @@ const NFTMarketplace = ({ onViewChange }: NFTMarketplaceProps) => {
     async function getNFTs() {
       const nftlist = await Promise.all(
         APP_ACCOUNTS.map((address: string) =>
-          nftDevNetXrplClient1
-            .generateWallet(CLIENT_ONE_FAUCET_WALLET_SECRET)
-            .then(() => nftDevNetXrplClient1.viewNfts(address))
+          promiseNftDevNXrplClient1.then(() =>
+            nftDevNetXrplClient1.viewNfts(address)
+          )
         )
       );
       console.log('LIST: ', nftlist);

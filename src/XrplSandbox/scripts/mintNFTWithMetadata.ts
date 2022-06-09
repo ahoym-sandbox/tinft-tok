@@ -1,10 +1,12 @@
-import { nftDevNetXrplClient1 } from '../createClients';
-import { CLIENT_ONE_FAUCET_WALLET_SECRET } from './CONFIG';
+import {
+  nftDevNetXrplClient1,
+  promiseNftDevNXrplClient1,
+} from '../createClients';
 
 console.log('🪙 Starting mintMFTWithMetadata script 🪙');
 
 export const mintNft = async (URI: string) => {
-  await nftDevNetXrplClient1.generateWallet(CLIENT_ONE_FAUCET_WALLET_SECRET);
+  await promiseNftDevNXrplClient1;
 
   const res = await nftDevNetXrplClient1.mintTransferableNft({ URI });
   console.log(res);
@@ -12,4 +14,4 @@ export const mintNft = async (URI: string) => {
   // TODO: either upload image with URI as name here of in the caller of this method
 
   return res;
-}
+};
