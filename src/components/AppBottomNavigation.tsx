@@ -1,9 +1,9 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import StorefrontIcon from '@mui/icons-material/Storefront';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Box from '@mui/material/Box';
+import { Marketplace } from '../assets/Marketplace';
+import { MintNft } from '../assets/MintNft';
+import { MyNfts } from '../assets/MyNfts';
 import { AppViews } from '../types';
 
 type AppBottomNavigationProps = {
@@ -33,17 +33,17 @@ export const AppBottomNavigation = ({
       >
         <BottomNavigationAction
           label="Marketplace"
-          icon={<StorefrontIcon />}
+          icon={<Marketplace />}
           value={AppViews.MARKETPLACE}
         />
         <BottomNavigationAction
           label="Mint NFT"
-          icon={<CameraAltIcon />}
+          icon={<MintNft />}
           value={AppViews.MINT_IT}
         />
         <BottomNavigationAction
           label="My NFTs"
-          icon={<AccountCircleIcon />}
+          icon={<MyNfts />}
           value={AppViews.GALLERY}
         />
       </BottomNavigation>
