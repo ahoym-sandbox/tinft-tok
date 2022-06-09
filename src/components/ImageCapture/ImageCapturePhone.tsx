@@ -2,14 +2,16 @@ import * as React from 'react';
 import { CaptureIcon } from './CaptureIcon';
 import './imageCapture.css';
 import { LandscapeIcon } from './LandscapeIcon';
+import CircularProgress from '@mui/material/CircularProgress';
 
 interface ImageCapturePhoneProps {
   onSubmit?: (file: File) => void;
   onChange?: (file: File | null) => void;
+  loading?: boolean;
 }
 
 const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
-  const { onSubmit, onChange } = props;
+  const { onSubmit, onChange, loading } = props;
   const testEl = React.useRef<HTMLInputElement>(null);
   const [file, setFile] = React.useState<File | null>(null);
   const [imgSrc, setImgSrc] = React.useState<string | null>(null);
@@ -22,7 +24,14 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
       : null;
     if (maybeFile) {
       setFile(maybeFile);
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        setImgSrc(e.target?.result as string);
+      };
+      reader.readAsDataURL(maybeFile);
     }
+
     if (onChange) {
       onChange(maybeFile);
     }
@@ -38,24 +47,10 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
       } else {
         alert(`${file.name} submitted`);
       }
-      setFile(null);
     } else {
       alert('Please select an image');
     }
   };
-
-  React.useEffect(() => {
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = function (e) {
-        setImgSrc(e.target?.result as string);
-        // $('#blah').attr('src', e.target.result).width(150).height(200);
-      };
-
-      reader.readAsDataURL(file);
-    }
-  });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -84,7 +79,24 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
           {imgSrc && (
             <div>
               <div className="upload-preview-wrapper">
-                <img className="upload-preview" src={imgSrc} alt="Preview" />
+                <div className="upload-preview-loader">
+                  {loading ? (
+                    <CircularProgress
+                      size={150}
+                      sx={{
+                        color: '#61dafb',
+                        opacity: '0.75',
+                        zIndex: 99,
+                      }}
+                    />
+                  ) : null}
+                </div>
+                <img
+                  className="upload-preview"
+                  src={imgSrc}
+                  alt="Preview"
+                  style={{ zIndex: 1 }}
+                />
               </div>
               <div className="capture-preview-item">
                 <span className="capture-preview-field">File name:</span>
@@ -104,7 +116,7 @@ const ImageCapturePhone: React.FC<ImageCapturePhoneProps> = (props) => {
               </div>
             </div>
           )}
-          <button className="upload-button" type="submit">
+          <button className="upload-button" type="submit" disabled={loading}>
             Mint NFT
           </button>
         </>
