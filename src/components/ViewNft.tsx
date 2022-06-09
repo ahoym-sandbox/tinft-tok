@@ -35,8 +35,6 @@ export const ViewNft = ({ nft }: ViewNftProps) => {
       });
   }, [nft.NFTokenID]);
 
-  console.log('TEST LOG HERE', isOwnNft, buyOffers);
-
   return (
     <div className="ImageList pb-12">
       {nftMetadata && (
@@ -63,6 +61,16 @@ export const ViewNft = ({ nft }: ViewNftProps) => {
           <div className="my-3">
             <p className="capture-preview-field">Author</p>
             <p>{nftMetadata.author}</p>
+          </div>
+
+          <div className="my-3">
+            <p className="capture-preview-field">Created At</p>
+            <p>{new Date(nftMetadata.lastModified).toISOString()}</p>
+          </div>
+
+          <div className="my-3">
+            <p className="capture-preview-field">File Type</p>
+            <p>{nftMetadata.fileType}</p>
           </div>
         </>
       )}
