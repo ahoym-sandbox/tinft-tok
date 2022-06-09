@@ -9,6 +9,10 @@
   width: 50px;
 }
 
+#myCanvas {
+  display: none;
+}
+
 .capture-icon-path {
   fill: #1976d2;
 }

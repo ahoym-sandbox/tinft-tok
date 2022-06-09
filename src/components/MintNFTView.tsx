@@ -54,7 +54,7 @@ export const MintNFTView: React.FC<MintNFTViewProps> = (props) => {
   };
 
   return (
-    <div>
+    <div className="mb-12">
       {showConfetti && (
         <Confetti
           width={width}
