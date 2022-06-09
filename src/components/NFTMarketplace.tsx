@@ -1,12 +1,12 @@
-import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { useEffect, useState } from 'react';
 import { convertHexToString, NFTokenMint } from 'xrpl';
+import { APP_ACCOUNTS } from '../app-accounts';
+import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
+import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
 import { NFTMetadata } from '../XrplSandbox/types';
 import EmptyState from './EmptyState';
-import { useEffect, useState } from 'react';
-import { DEVNETCLIENTS } from '../XrplSandbox/createClients';
-import { TEST_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
 
 const getNftMetadata = (URI: string): NFTMetadata => {
   return JSON.parse(convertHexToString(URI));
@@ -18,10 +18,11 @@ const NFTMarketplace = () => {
   useEffect(() => {
     async function getNFTs() {
       const nftlist = await Promise.all(
-        DEVNETCLIENTS.map(async (account: any, index: number) => {
-          await account.generateWallet(TEST_WALLET_SECRET[index]);
-          return account.viewOwnNfts();
-        })
+        APP_ACCOUNTS.map((address: string) =>
+          nftDevNetXrplClient1
+            .generateWallet(CLIENT_ONE_FAUCET_WALLET_SECRET)
+            .then(() => nftDevNetXrplClient1.viewNfts(address))
+        )
       );
       console.log('LIST: ', nftlist);
       let all: any[] = [];

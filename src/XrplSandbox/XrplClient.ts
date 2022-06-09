@@ -23,6 +23,7 @@ import {
   listNftBuyOffers,
   listNftSellOffers,
   mintTransferableNft,
+  viewNfts,
   viewOwnNfts,
 } from './NFTokens/nftClient';
 import { cancelOffer, createOffer } from './Offers/offersClient';
@@ -124,6 +125,7 @@ export class XrplClient {
     this.stateRefProvider
   );
   public viewOwnNfts = viewOwnNfts.bind(null, this.stateRefProvider);
+  public viewNfts = viewNfts.bind(null, this.stateRefProvider);
   public burnNft = burnNft.bind(this, this.stateRefProvider);
   public createNftSellOffer = createNftSellOffer.bind(
     null,

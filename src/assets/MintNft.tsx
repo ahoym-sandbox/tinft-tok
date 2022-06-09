@@ -3,8 +3,8 @@ export const MintNft = () => (
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 405.446307842548 304.8950664813701"
-    width="48"
-    height="304.8950664813701"
+    width="92"
+    height="92"
   >
     <g
       transform="translate(182.6237605168269 64.47899451622595) rotate(0 53.5999474158653 110.45033381535455)"

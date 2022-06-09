@@ -12,11 +12,15 @@ const TopBar = styled.div`
   margin-bottom: 48px;
 `;
 
-export const TopNavigation = () => {
+export const TopNavigation = ({
+  onViewChange,
+}: {
+  onViewChange: () => void;
+}) => {
   return (
     <>
       <TopBar className="TopNavigation">
-        <img alt="logo" src={logo} />
+        <img alt="logo" src={logo} onClick={onViewChange} />
       </TopBar>
       <hr className="mt-10" />
     </>

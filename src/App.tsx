@@ -6,12 +6,10 @@ import { AppViews } from './types';
 import './App.css';
 import NFTMarketplace from './components/NFTMarketplace';
 import { TopNavigation } from './components/TopNavigation';
-
-const HOME_VIEW = AppViews.MARKETPLACE;
-const GALLERY_VIEW = AppViews.GALLERY;
+import { VerifyNft } from './components/VerifyNft';
 
 function App() {
-  const [currentView, setCurrentView] = useState(HOME_VIEW);
+  const [currentView, setCurrentView] = useState(AppViews.MARKETPLACE);
 
   let body = null;
   switch (currentView) {
@@ -24,17 +22,20 @@ function App() {
     case AppViews.MINT_IT:
       body = (
         <MintNFTView
-          redirectToGalleryView={() => setCurrentView(GALLERY_VIEW)}
+          redirectToGalleryView={() => setCurrentView(AppViews.GALLERY)}
         />
       );
       break;
+    case AppViews.VERIFY_NFT:
+      body = <VerifyNft />;
+      break;
     default:
-      body = 'NFT Marketplace';
+      body = <NFTMarketplace />;
   }
 
   return (
     <div className="App">
-      <TopNavigation />
+      <TopNavigation onViewChange={() => setCurrentView(AppViews.VERIFY_NFT)} />
       <div className="AppContainer w-full h-full">{body}</div>
       <AppBottomNavigation
         currentView={currentView}

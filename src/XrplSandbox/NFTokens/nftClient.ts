@@ -68,6 +68,21 @@ export const viewOwnNfts = async (stateRefProvider: StateRefProvider) => {
 };
 
 /**
+ * View all NFTs associated to a given address
+ */
+export const viewNfts = async (
+  stateRefProvider: StateRefProvider,
+  account: string
+) => {
+  const { client } = await stateRefProvider();
+
+  return client.request({
+    command: 'account_nfts',
+    account,
+  });
+};
+
+/**
  * {@link https://xrpl.org/nftokenburn.html}
  */
 export const burnNft = async (
