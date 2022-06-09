@@ -3,7 +3,7 @@ export const MintNft = () => (
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 405.446307842548 304.8950664813701"
-    width="405.446307842548"
+    width="48"
     height="304.8950664813701"
   >
     <g

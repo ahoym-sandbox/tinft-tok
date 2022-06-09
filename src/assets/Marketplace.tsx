@@ -3,7 +3,7 @@ export const Marketplace = () => (
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 467.0862285907451 374.75548377403834"
-    width="467.0862285907451"
+    width="48"
     height="374.75548377403834"
   >
     <g

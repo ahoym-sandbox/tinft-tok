@@ -3,7 +3,7 @@ export const MyNfts = () => (
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 273.1951904296875 335.71052551269526"
-    width="273.1951904296875"
+    width="48"
     height="335.71052551269526"
   >
     <g
