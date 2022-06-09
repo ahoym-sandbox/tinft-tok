@@ -38,3 +38,9 @@
 body {
   background-color: #fff;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
