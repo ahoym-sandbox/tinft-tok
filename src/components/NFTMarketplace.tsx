@@ -1,18 +1,18 @@
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { useEffect, useState } from 'react';
-import { convertHexToString, NFTokenMint } from 'xrpl';
+import { NFTokenMint } from 'xrpl';
 import { APP_ACCOUNTS } from '../app-accounts';
+import { getNftMetadata } from '../utilities';
 import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
 import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
-import { NFTMetadata } from '../XrplSandbox/types';
 import EmptyState from './EmptyState';
 
-const getNftMetadata = (URI: string): NFTMetadata => {
-  return JSON.parse(convertHexToString(URI));
+type NFTMarketplaceProps = {
+  onViewChange: (nft: NFTokenMint) => void;
 };
 
-const NFTMarketplace = () => {
+const NFTMarketplace = ({ onViewChange }: NFTMarketplaceProps) => {
   const [nfts, setNfts] = useState<any>([]);
 
   useEffect(() => {
@@ -44,6 +44,7 @@ const NFTMarketplace = () => {
               <ImageListItem
                 key={getNftMetadata(nft.URI).url + idx}
                 className="m-2"
+                onClick={() => onViewChange(nft)}
               >
                 {getNftMetadata(nft.URI).fileType === 'video/quicktime' ? (
                   <video

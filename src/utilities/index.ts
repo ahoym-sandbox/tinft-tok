@@ -1,4 +1,6 @@
 import ExifReader from 'exifreader';
+import { convertHexToString } from 'xrpl';
+import { NFTMetadata } from '../XrplSandbox/types';
 
 export function logAndPass(result: any) {
   console.log(result);
@@ -20,3 +22,8 @@ export async function extractMetadata(file: File) {
   console.log('File last modified date: ', file.lastModified);
   return tags;
 }
+
+export const getNftMetadata = (URI: string): NFTMetadata => {
+  return JSON.parse(convertHexToString(URI));
+};
+(window as any).getNftMetadata = getNftMetadata;

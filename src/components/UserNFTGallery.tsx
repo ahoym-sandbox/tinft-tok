@@ -3,17 +3,17 @@ import ImageListItem from '@mui/material/ImageListItem/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { convertHexToString, NFTokenMint } from 'xrpl';
+import { NFTokenMint } from 'xrpl';
+import { getNftMetadata } from '../utilities';
 import { nftDevNetXrplClient1 } from '../XrplSandbox/createClients';
 import { CLIENT_ONE_FAUCET_WALLET_SECRET } from '../XrplSandbox/scripts/CONFIG';
-import { NFTMetadata } from '../XrplSandbox/types';
 import EmptyState from './EmptyState';
 
-const getNftMetadata = (URI: string): NFTMetadata => {
-  return JSON.parse(convertHexToString(URI));
+type UserNFTGalleryProps = {
+  onViewChange: (nft: NFTokenMint) => void;
 };
 
-const UserNFTGallery = () => {
+const UserNFTGallery = ({ onViewChange }: UserNFTGalleryProps) => {
   const [nfts, setNfts] = useState([]);
 
   useEffect(() => {
@@ -34,7 +34,10 @@ const UserNFTGallery = () => {
           <ImageList className="ImageList" cols={2} rowHeight={250}>
             {nfts.map((nft: NFTokenMint, idx) =>
               nft.URI ? (
-                <ImageListItem key={getNftMetadata(nft.URI).url + idx}>
+                <ImageListItem
+                  key={getNftMetadata(nft.URI).url + idx}
+                  onClick={() => onViewChange(nft)}
+                >
                   {getNftMetadata(nft.URI).fileType === 'video/quicktime' ? (
                     <video
                       height="150"

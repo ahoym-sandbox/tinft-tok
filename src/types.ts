@@ -3,4 +3,5 @@ export enum AppViews {
   GALLERY = 'GALLERY',
   MINT_IT = 'MINT_IT',
   VERIFY_NFT = 'VERIFY_NFT',
+  VIEW_NFT = 'VIEW_NFT',
 }
