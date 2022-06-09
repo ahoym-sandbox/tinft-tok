@@ -47,7 +47,12 @@ function App() {
       body = <VerifyNft />;
       break;
     case AppViews.VIEW_NFT:
-      body = <ViewNft nft={selectedNft!} />;
+      body = (
+        <ViewNft
+          nft={selectedNft!}
+          redirectToGalleryView={() => setCurrentView(AppViews.GALLERY)}
+        />
+      );
       break;
     default:
       body = <VerifyNft />;

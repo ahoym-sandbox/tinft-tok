@@ -1,5 +1,8 @@
-import { ImageListItem } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Button, CircularProgress, ImageListItem } from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
+import Confetti from 'react-confetti';
+import { dropsToXrp } from 'xrpl';
+import { NFTOffer } from 'xrpl/dist/npm/models/common';
 import { getNftMetadata } from '../utilities';
 import {
   nftDevNetXrplClient1,
@@ -9,19 +12,30 @@ import { NFT } from '../XrplSandbox/types';
 
 type ViewNftProps = {
   nft: NFT;
+  redirectToGalleryView: () => void;
 };
 
-export const ViewNft = ({ nft }: ViewNftProps) => {
+export const ViewNft = ({ nft, redirectToGalleryView }: ViewNftProps) => {
   const nftMetadata = nft.URI ? getNftMetadata(nft.URI) : null;
   const [isOwnNft, setIsOwnNft] = useState<boolean>(false);
-  const [buyOffers, setBuyOffers] = useState([]);
+  const [buyOffers, setBuyOffers] = useState<NFTOffer[]>([]);
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [showConfetti, setShowConfetti] = useState<boolean>(false);
+  const width = Math.max(
+    document.documentElement.clientWidth || 0,
+    window.innerWidth || 0
+  );
+  const height = Math.max(
+    document.documentElement.clientHeight || 0,
+    window.innerHeight || 0
+  );
 
   useEffect(() => {
     promiseNftDevNXrplClient1
       .then(() => nftDevNetXrplClient1.listNftBuyOffers(nft.NFTokenID))
       .then((response: any) => {
         console.log(`Buy offers for ${nft.NFTokenID}`, response.result);
-        setBuyOffers(response.result?.offers);
+        response.result?.offers && setBuyOffers(response.result?.offers);
       })
       .then(nftDevNetXrplClient1.viewOwnNfts)
       .then((res: any) => {
@@ -34,6 +48,31 @@ export const ViewNft = ({ nft }: ViewNftProps) => {
         return isOwnNft;
       });
   }, [nft.NFTokenID]);
+
+  const bestBuyOffer =
+    buyOffers.length === 0
+      ? null
+      : buyOffers.reduce((prev: NFTOffer, curr: NFTOffer) =>
+          Number(prev.amount) > Number(curr.amount) ? prev : curr
+        );
+
+  const handleBuyOffer = useCallback(() => {
+    if (bestBuyOffer) {
+      setSubmitting(true);
+      promiseNftDevNXrplClient1
+        .then(() =>
+          nftDevNetXrplClient1.acceptNftBuyOffer(bestBuyOffer.nft_offer_index)
+        )
+        .then(() => {
+          setSubmitting(false);
+          setShowConfetti(true);
+          setTimeout(() => {
+            setShowConfetti(false);
+            redirectToGalleryView();
+          }, 2000);
+        });
+    }
+  }, [bestBuyOffer, redirectToGalleryView]);
 
   return (
     <div className="ImageList pb-12">
@@ -92,6 +131,37 @@ export const ViewNft = ({ nft }: ViewNftProps) => {
           <p className="capture-preview-field"># of Buy Offers</p>
           <p>{buyOffers.length}</p>
         </div>
+      )}
+
+      {submitting && (
+        <CircularProgress
+          size={150}
+          sx={{
+            color: 'black',
+            opacity: '0.75',
+          }}
+        />
+      )}
+
+      {isOwnNft && bestBuyOffer && (
+        <div className="my-7">
+          <Button
+            variant="outlined"
+            disabled={submitting}
+            onClick={handleBuyOffer}
+          >{`Accept best offer @ ${dropsToXrp(
+            bestBuyOffer.amount as any
+          )} XRP`}</Button>
+        </div>
+      )}
+
+      {showConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+          gravity={0.25}
+          initialVelocityX={10}
+        />
       )}
     </div>
   );

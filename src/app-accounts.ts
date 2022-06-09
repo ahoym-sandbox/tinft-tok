@@ -6,6 +6,7 @@ export const APP_ACCOUNTS = [
   'rndE6df4r1NVdB9Xc46Zi43ESGs3haLELi', // 'ss23Ta1pCxN9MiyGaBganizdQ84RF',
   'rsh1JPtMuaYUmrGNMxzpJeDQCdAksMU49V', // 'ssXDVgBU2GNx5Bvbuckrs1uB1me1t',
   'rHz5Lb5LxB9JAKhLMeE7y2YKuG7XzQFBxs', // '???'
+  'rUVxpeoY2nsRzaDPYGP4TARHqa9GSrqcYY', // 'sncrDcXWvt6D9VKcYHF7rMrtspmen'
 ];
 
 export const ALL_ACCOUNTS = [
