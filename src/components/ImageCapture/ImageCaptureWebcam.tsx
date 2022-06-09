@@ -142,7 +142,11 @@ export const ImageCaptureWebcam: React.FC<ImageCaptureWebcamProps> = (
             <span>{file.lastModified}</span>
           </div>
 
-          <button className="upload-button" onClick={handleSubmit}>
+          <button
+            className="upload-button"
+            onClick={handleSubmit}
+            disabled={loading}
+          >
             Mint NFT
           </button>
         </div>
