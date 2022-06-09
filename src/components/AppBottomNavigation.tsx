@@ -21,7 +21,6 @@ export const AppBottomNavigation = ({
       sx={{
         width: '100%',
         marginTop: '16px',
-        paddingTop: '16px',
         borderTop: '1px solid #e5e7eb',
       }}
     >
