@@ -10,7 +10,7 @@ export const ViewNft = ({ nft }: ViewNftProps) => {
   const nftMetadata = nft.URI ? getNftMetadata(nft.URI) : null;
 
   return (
-    <div className="ImageList">
+    <div className="ImageList pb-12">
       {nftMetadata && (
         <>
           <ImageListItem>
@@ -41,7 +41,9 @@ export const ViewNft = ({ nft }: ViewNftProps) => {
 
       <div className="my-3">
         <p className="capture-preview-field">NFTokenID</p>
-        <p>{nft.NFTokenID}</p>
+        <div className="center">
+          <p className="squish">{nft.NFTokenID}</p>
+        </div>
       </div>
 
       <div className="my-3">
